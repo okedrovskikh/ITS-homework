@@ -4,7 +4,6 @@ let alph = new Array();
 let entropy = 0;
 let i;
 let n = 0;
-let j = 0;
 
 fs.readFile('abrakadabra.txt', function(error, data){
 	if (error) throw error;
@@ -15,14 +14,12 @@ fs.readFile('abrakadabra.txt', function(error, data){
     for (i = 0; i < inText.length; i++){
 		alph[inText.charAt(i)]++;
 	}
-
-	for (i in alph){
-		n += 1;
-	}
 	
 	for (i in alph){
 		i = alph[i]/inText.length;
-		entropy -= i*(Math.log(i)/Math.log(n)); 
+		entropy -= i*Math.log(i); 
+		n ++;
 	}
+	entropy /= Math.log(n)
 	console.log(entropy);
 });
