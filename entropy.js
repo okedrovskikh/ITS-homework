@@ -20,6 +20,8 @@ fs.readFile('abrakadabra.txt', function(error, data){
 		entropy -= i*Math.log(i); 
 		n ++;
 	}
-	entropy /= Math.log(n)
+	if (n > 1){
+		entropy /= Math.log(n)
+	}
 	console.log(entropy);
 });
