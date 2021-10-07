@@ -59,7 +59,7 @@ fs.readFile('abrakadabra.txt', function(error, data){
 			j--;
 		}
 	}
-	else{
+	else if (j == 1){
 		tree[0].used = true;
 		tree[0].code = '0';
 	}
