@@ -27,7 +27,6 @@ fs.readFile('abrakadabra.txt', function(error, data){
 	    tree.push(n);
 		j++;
 	}
-	console.log(tree);
 	
 	tree.sort(function (a, b){
 		if (a.freq > b.freq){
