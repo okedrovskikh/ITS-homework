@@ -64,5 +64,18 @@ fs.readFile('abrakadabra.txt', function(error, data){
 		tree[0].code = '0';
 	}
 	
+	for (i in tree){
+		tree[tree[count].letter] = tree[count];
+		count++;
+	}
 	console.log(tree);
+	
+	for(i = 0; i < inText.length; i++){
+		out = out + tree[inText.charAt(i)].code;
+	}
+	console.log(out);
+	fs.writeFile('output.txt', out, function(error) {
+		if (error) throw error;
+	});
+});
 });
