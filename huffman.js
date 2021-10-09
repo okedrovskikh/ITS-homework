@@ -78,4 +78,3 @@ fs.readFile('abrakadabra.txt', function(error, data){
 		if (error) throw error;
 	});
 });
-});
