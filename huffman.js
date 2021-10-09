@@ -110,10 +110,7 @@ fs.readFile('output.txt', function(error, data){
 			out = out + tree[tmp - 1].letter;
 			code = '';
 		}
-		//console.log('code ' + code);
-		//console.log('decode ' + out);
 		k++;
 	}
 	console.log(out);
 });
-//node huffman.js
