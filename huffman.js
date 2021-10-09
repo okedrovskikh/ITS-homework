@@ -7,7 +7,6 @@ let alph = new Array();
 let tree = new Array();
 let letter = new Array();
 let j = 0;
-let c = 0;
 let k = 0;
 let count = 0;
 
