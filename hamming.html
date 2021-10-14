@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <title>Hamming code</title>
+	    <script>
+		    function code(){
+			   let input = document.getElementById('inputData').value;
+			   let digits = new Array();
+			   let count = 0;
+			   for (i = 0; i < input.length; i++){
+			    digits[i] = input.charAt(i) * 1;
+				count++;
+			   };
+			   if(count > 2){
+			    for (i = 0; i < input.length - 2; i ++){
+				    digits.push((digits[i] + digits[i + 1] + digits[count - 1])%2);
+				}
+				digits.push((digits[count - 1] + digits[count - 2] + digits[0])%2);
+			   }
+			   else if (count == 2){
+			    digits.push((digits[0] + digits[1])%2);
+			   }
+			   else{
+			    digits.push(digits[0]%2);
+			   }
+			   document.getElementById('codedData').value = digits.join('');
+			}
+			function decode(){
+			   let input = document.getElementById('codedData').value;
+			   let digits = new Array();
+			   let count;
+			   for (i = 0; i < input.length; i++){
+			    digits[i] = input.charAt(i) * 1;
+				count++;
+			   }
+			   if(count > 2){
+			    //do smth
+			   }
+			   else if(count == 2){
+			    // do smth
+			   }
+			   else{
+			    //do smth
+			   }
+			   document.getElementById('decodedData').value = digits.join('');
+			}
+		</script>
+    </head>
+    <body>
+	    <p><input type='text' id='inputData' /> input data</p>
+		<p><input type='button' onclick = 'code()' value='Code'/></p>
+		<p><input type='text' id='codedData' /> coded data</p>
+		<p><input type='button' onclick='decode()' value='Decode'/></p>
+		<p><input type='text' id='decodedData' /> decoded data</p>
+    </body>
+</html>
