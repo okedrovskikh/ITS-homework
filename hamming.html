@@ -4,89 +4,59 @@
 	    <title>Hamming code</title>
 	    <script>
 		    function code(){
-				let input = document.getElementById('inputData').value;
-			    let digits = new Array();
-			    let count = 0;
-			    for ( let i = 0; i < input.length; i++){
-					digits[i] = input.charAt(i) * 1;
-				    count++;
-			    };
-			    if(count > 2){
-					for (let i = 0; i < input.length - 2; i ++){
-						digits.push((digits[i] + digits[i + 1] + digits[count - 1])%2);
-				    }
-				    digits.push((digits[count - 1] + digits[count - 2] + digits[0])%2);
-			    }
-			    else if (count == 2){
-					digits.push((digits[0] + digits[1])%2);
-			    }
-			    else{
-					digits.push(digits[0]%2);
-			    }
-			    document.getElementById('codedData').value = digits.join('');
-			}
-			function decode(){
-			    let input = document.getElementById('codedData').value;
-			    let digits = new Array();
-			    let count = 0, checkcount = 0, codelen, err = false, output = '';
-			    for (let i = 0; i < input.length; i++){
+            let input = (document.getElementById('inputData').value);
+            let digits = new Array();
+            if (input.length != 4){
+                alert('В строке не должно быть ровно 4 символов');
+                location.reload()
+            }
+            for (let i = 0; i < input.length; i++){
+                digits[i] = input.charAt(i) * 1;
+            }
+            digits.push((digits[0] + digits[2] + digits[3])%2);
+            digits.push((digits[0] + digits[1] + digits[3])%2);
+            digits.push((digits[2] + digits[1] + digits[3])%2);
+            document.getElementById('codedData').value = digits.join('');
+        }
+        function decode(){
+			let input = document.getElementById('codedData').value;
+			let digits = new Array();
+            let output = new Array();
+            if (input.length != 7){                                             
+                alert('В строке не может быть более 7 символов');
+                location.reload()
+            }
+			for (let i = 0; i < input.length; i++){
 			        digits[i] = input.charAt(i) * 1;
-				    count++;
-			    }
-			    codelen = count / 2 + 0.5;
-			    if(count > 3){
-					for (let i = 0; i < codelen - 2; i++){
-				        if((digits[i] + digits[i + 1] + digits[codelen - 1] + digits[codelen + i])%2 == 1){
-				 		    err = true;
-						    break;
-					    }
-						checkcount++;
-				    }
-					if ((digits[codelen - 2] + digits[codelen - 1] + digits[0] + digits[count - 1])%2 == 1){
-						err = true;
-						//checkcount++; //???
-					}
-				    if(err == true){
-						if(checkcount < 1){
-							if ((digits[codelen - 1] + digits[countcheck] + digits[countcheck + 1] + digits[codelen])%2 == 1){
-								document.getElementById('decodedData').value = 'error in digit';
-							}
-							else{
-								document.getElementById('decodedData').value = 'everything Ok';
-							}
-						}
-						/*else if (checkcount > codelen - 2){
-							document.getElementById('decodedData').value = 'everything Ok';
-						}*/
-						else {
-							document.getElementById('decodedData').value = checkcount;
-							//document.getElementById('decodedData').value = 'error in digits';
-						}
-				    }
-					else{
-						for(let i = 0; i < codelen; i++){
-							output += String(digits[i]);
-						}
-						document.getElementById('decodedData').value = output;
-					}
-			    }
-			    else if(count == 3){
-			        if ((digits[0] + digits[1] + digits[2]) % 2 == 0){
-				        document.getElementById('decodedData').value = String(digits[0]) + String(digits[1]);
-				    }
-			        else{
-			            document.getElementById('decodedData').value = 'error';
-			        }
-			    }
-			    else{
-			        if (digits[0] == digits[1]){
-			            document.getElementById('decodedData').value = digits[0];
-			        }
-			        else{
-			            document.getElementById('decodedData').value = 'error';
-				    }
-			    }
-			   }
+			}  
+            if (((digits[0] + digits[2] + digits[3] + digits[4])%2 == 1) && ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1) && ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1)){
+                digits[3] = (digits[3]+1)%2;
+                alert('Ошибка находится под цифрой номер 4');
+            }
+            if (((digits[0] + digits[2] + digits[3] + digits[4])%2 == 1) && ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1) && ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0)){
+                digits[0] = (digits[0]+1)%2;
+                alert('Ошибка находится под цифрой номер 1');
+            }
+            if (((digits[0] + digits[2] + digits[3] + digits[4])%2 == 0) && ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1) && ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1)){
+                digits[1] = (digits[1]+1)%2;
+                alert('Ошибка находится под цифрой номер 2');
+            }
+            if (((digits[0] + digits[2] + digits[3] + digits[4])%2 == 1) && ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 0) && ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1)){
+                digits[2] = (digits[2]+1)%2;
+                alert('Ошибка находится под цифрой номер 3');
+            }
+            if (((digits[0] + digits[2] + digits[3] + digits[4])%2 == 1) && ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 0) && ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0)){
+                alert('Ошибка находится под цифрой номер 5');
+            }
+            if (((digits[0] + digits[2] + digits[3] + digits[4])%2 == 0) && ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1) && ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0)){
+                alert('Ошибка находится под цифрой номер 6');
+            }
+            if (((digits[0] + digits[2] + digits[3] + digits[4])%2 == 0) && ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 0) && ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1)){
+                alert('Ошибка находится под цифрой номер 7');
+            }
+            output = [digits[0],digits[1], digits[2], digits[3]]; 
+            document.getElementById('decodedData').value = output.join('');
+        }
 		</script>
     </head>
     <body>
