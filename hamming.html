@@ -4,70 +4,89 @@
 	    <title>Hamming code</title>
 	    <script>
 		    function code(){
-			   let input = document.getElementById('inputData').value;
-			   let digits = new Array();
-			   let count = 0;
-			   for ( let i = 0; i < input.length; i++){
-			    digits[i] = input.charAt(i) * 1;
-				count++;
-			   };
-			   if(count > 2){
-			    for (let i = 0; i < input.length - 2; i ++){
-				    digits.push((digits[i] + digits[i + 1] + digits[count - 1])%2);
-				}
-				digits.push((digits[count - 1] + digits[count - 2] + digits[0])%2);
-			   }
-			   else if (count == 2){
-			    digits.push((digits[0] + digits[1])%2);
-			   }
-			   else{
-			    digits.push(digits[0]%2);
-			   }
-			   document.getElementById('codedData').value = digits.join('');
+				let input = document.getElementById('inputData').value;
+			    let digits = new Array();
+			    let count = 0;
+			    for ( let i = 0; i < input.length; i++){
+					digits[i] = input.charAt(i) * 1;
+				    count++;
+			    };
+			    if(count > 2){
+					for (let i = 0; i < input.length - 2; i ++){
+						digits.push((digits[i] + digits[i + 1] + digits[count - 1])%2);
+				    }
+				    digits.push((digits[count - 1] + digits[count - 2] + digits[0])%2);
+			    }
+			    else if (count == 2){
+					digits.push((digits[0] + digits[1])%2);
+			    }
+			    else{
+					digits.push(digits[0]%2);
+			    }
+			    document.getElementById('codedData').value = digits.join('');
 			}
 			function decode(){
-			   let input = document.getElementById('codedData').value;
-			   let digits = new Array();
-			   let check = new Array();
-			   let count = 0, countch = 0;
-			   let checkcode, code = '', codelen;
-			   for (let i = 0; i < input.length; i++){
-			    digits[i] = input.charAt(i) * 1;
-				count++;
-			   }
-			   codelen = count / 2 + 0.5; // 0 -> code - 1
-			   checkcode = codelen; // code -> count - 1
-			   if(count > 3){
-			    for (let i = 0; i < codelen; i++){
-				    code += String(digits[i]);
-				}
-			    for (let i = 0; i < code.length; i++){
-				    check[i] = code.charAt(i) * 1;
-					countch++;
-				}
-			    for (let i = 0; i < code.length - 2; i ++){
-				    check.push((check[i] + check[i + 1] + check[countch - 1])%2);
-				}
-				check.push((check[countch - 1] + check[countch - 2] + check[0])%2);
-				document.getElementById('decodedData').value = check.join('');
-			   }
-			   else if(count == 3){
-			    if ((digits[0] + digits[1] + digits[2]) % 2 == 0){
-				    document.getElementById('decodedData').value = String(digits[0]) + String(digits[1]);
-				}
+			    let input = document.getElementById('codedData').value;
+			    let digits = new Array();
+			    let count = 0, checkcount = 0, codelen, err = false, output = '';
+			    for (let i = 0; i < input.length; i++){
+			        digits[i] = input.charAt(i) * 1;
+				    count++;
+			    }
+			    codelen = count / 2 + 0.5;
+			    if(count > 3){
+					for (let i = 0; i < codelen - 2; i++){
+				        if((digits[i] + digits[i + 1] + digits[codelen - 1] + digits[codelen + i])%2 == 1){
+				 		    err = true;
+						    break;
+					    }
+						checkcount++;
+				    }
+					if ((digits[codelen - 2] + digits[codelen - 1] + digits[0] + digits[count - 1])%2 == 1){
+						err = true;
+						//checkcount++; //???
+					}
+				    if(err == true){
+						if(checkcount < 1){
+							if ((digits[codelen - 1] + digits[countcheck] + digits[countcheck + 1] + digits[codelen])%2 == 1){
+								document.getElementById('decodedData').value = 'error in digit';
+							}
+							else{
+								document.getElementById('decodedData').value = 'everything Ok';
+							}
+						}
+						/*else if (checkcount > codelen - 2){
+							document.getElementById('decodedData').value = 'everything Ok';
+						}*/
+						else {
+							document.getElementById('decodedData').value = checkcount;
+							//document.getElementById('decodedData').value = 'error in digits';
+						}
+				    }
+					else{
+						for(let i = 0; i < codelen; i++){
+							output += String(digits[i]);
+						}
+						document.getElementById('decodedData').value = output;
+					}
+			    }
+			    else if(count == 3){
+			        if ((digits[0] + digits[1] + digits[2]) % 2 == 0){
+				        document.getElementById('decodedData').value = String(digits[0]) + String(digits[1]);
+				    }
+			        else{
+			            document.getElementById('decodedData').value = 'error';
+			        }
+			    }
 			    else{
-			        document.getElementById('decodedData').value = 'error';
+			        if (digits[0] == digits[1]){
+			            document.getElementById('decodedData').value = digits[0];
+			        }
+			        else{
+			            document.getElementById('decodedData').value = 'error';
+				    }
 			    }
-			    }
-			    else{
-			     if (digits[0] == digits[1]){
-			        document.getElementById('decodedData').value = digits[0];
-			     }
-			     else{
-			        document.getElementById('decodedData').value = 'error';
-				 }
-			    }
-			}
+			   }
 		</script>
     </head>
     <body>
