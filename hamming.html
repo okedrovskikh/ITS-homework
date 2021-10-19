@@ -67,7 +67,7 @@
                     alert('Ошибка в 5-ой цифре');
                 }
             }  
-            if((digits[0] + digits[2] + digits[3] + digits[4])%2 == 0){
+            else{
                 if ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1 && (digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
                     digits[1] = (digits[1]+1)%2;
                     alert('Ошибка во 2-ой цифре');
