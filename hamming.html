@@ -24,9 +24,9 @@
                     break;
                 }
             }
-	    digits.push((digits[0] + digits[1] + digits[3])%2);
-	    digits.push((digits[2] + digits[1] + digits[3])%2);
             digits.push((digits[0] + digits[2] + digits[3])%2);
+            digits.push((digits[0] + digits[1] + digits[3])%2);
+            digits.push((digits[2] + digits[1] + digits[3])%2);
             document.getElementById('codedData').value = digits.join('');
         }
         function decode(){
