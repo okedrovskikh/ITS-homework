@@ -71,23 +71,23 @@
                                             }
 				    }
 			    }  
-            else {
-                if((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1){
-                    if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
-                        digits[1] = (digits[1]+1)%2;
-                        alert('Ошибка во 2-ой цифре');
-                    }
-                    else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0){
-                        alert('Ошибка в 6-ой цифре');
-                    }
-                }
-                else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
-                    alert('Ошибка в 7-ой цифре');
-                }
-            }
-            document.getElementById('decodedData').value = String(digits[0]) + String(digits[1]) + String(digits[2]) + String(digits[3]);
-        }
-		</script>
+			    else {
+				    if((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1){
+					    if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
+						    digits[1] = (digits[1]+1)%2;
+                                                    alert('Ошибка во 2-ой цифре');
+                                            }
+                                            else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0){
+                                                    alert('Ошибка в 6-ой цифре');
+                                            }
+				    }
+                                    else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
+                                            alert('Ошибка в 7-ой цифре');
+                                    }
+			    }
+			    document.getElementById('decodedData').value = String(digits[0]) + String(digits[1]) + String(digits[2]) + String(digits[3]);
+		    }
+	    </script>
     </head>
     <body>
 	    <p><input type='text' id='inputData' /> input data</p>
