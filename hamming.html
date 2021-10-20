@@ -4,90 +4,90 @@
 	    <title>Hamming code</title>
 	    <script>
 		    function code(){
-            let input = (document.getElementById('inputData').value);
-            let digits = new Array();
-            if (input.length != 4){
-                alert('В строке должно быть ровно 4 символов');
-                location.reload()
-            }
-            for (let i = 0; i < input.length; i++){
-                digits[i] = input.charAt(i) * 1;
-                if(digits[i] == 0){
-                    continue;
-                }
-                else if(digits[i] == 1){
-                    continue;
-                }
-                else {
-                    alert('В строке могут находится только 0 и 1');
-                    location.reload()
-                    break;
-                }
-            }
-            digits.push((digits[0] + digits[2] + digits[3])%2);
-            digits.push((digits[0] + digits[1] + digits[3])%2);
-            digits.push((digits[2] + digits[1] + digits[3])%2);
-            document.getElementById('codedData').value = digits.join('');
-        }
-        function decode(){
-			let input = document.getElementById('codedData').value;
-			let digits = new Array();
-            if (input.length != 7){                                             
-                alert('В строке не может быть более 7 символов');
-                location.reload()
-            }
-			for (let i = 0; i < input.length; i++){
-			    digits[i] = input.charAt(i) * 1;
-                if(digits[i] == 0){
-                    continue;
-                }
-                else if(digits[i] == 1){
-                    continue;
-                }
-                else {
-                    alert('В строке могут находится только 0 и 1');
-                    location.reload()
-                    break;
-                }
-			}  
-            if((digits[0] + digits[2] + digits[3] + digits[4])%2 == 1){
-                if ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1){
-                    if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
-                        digits[3] = (digits[3]+1)%2;
-                        alert('Ошибка в 4-ой цифре');
-                    }
-                    else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0){
-                        digits[0] = (digits[0]+1)%2;
-                        alert('Ошибка в 1-ой цифре');
-                    }
-                }
-                else{
-                    if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
-                        digits[2] = (digits[2]+1)%2;
-                        alert('Ошибка в 3-ей цифре');
-                    }
-                    else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0){
-                        alert('Ошибка в 5-ой цифре');
-                    }
-                }
-            }  
-            else {
-                if((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1){
-                    if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
-                        digits[1] = (digits[1]+1)%2;
-                        alert('Ошибка во 2-ой цифре');
-                    }
-                    else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0){
-                        alert('Ошибка в 6-ой цифре');
-                    }
-                }
-                else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
-                    alert('Ошибка в 7-ой цифре');
-                }
-            }
-            document.getElementById('decodedData').value = String(digits[0]) + String(digits[1]) + String(digits[2]) + String(digits[3]);
-        }
-		</script>
+			    let input = (document.getElementById('inputData').value);
+			    let digits = new Array();
+			    if (input.length != 4){
+				    alert('В строке должно быть ровно 4 символов');
+                                    location.reload()
+                            }
+                            for (let i = 0; i < input.length; i++){
+                                    digits[i] = input.charAt(i) * 1;
+                                    if(digits[i] == 0){
+					    continue;
+                                    }
+                                    else if(digits[i] == 1){
+                                            continue;
+                                    }
+                                    else {
+                                            alert('В строке могут находится только 0 и 1');
+                                            location.reload()
+                                            break;
+                                    }
+                           }
+                           digits.push((digits[0] + digits[2] + digits[3])%2);
+                           digits.push((digits[0] + digits[1] + digits[3])%2);
+                           digits.push((digits[2] + digits[1] + digits[3])%2);
+                           document.getElementById('codedData').value = digits.join('');
+		    }
+		    function decode(){
+			    let input = document.getElementById('codedData').value;
+			    let digits = new Array();
+                            if (input.length != 7){                                             
+				    alert('В строке не может быть более 7 символов');
+                                    location.reload()
+                            }
+			    for (let i = 0; i < input.length; i++){
+			            digits[i] = input.charAt(i) * 1;
+                                    if(digits[i] == 0){
+					    continue;
+                                    }
+                                    else if(digits[i] == 1){
+                                            continue;
+                                    }
+                                    else {
+                                            alert('В строке могут находится только 0 и 1');
+                                            location.reload()
+                                    break;
+                                   }
+			    }  
+                            if((digits[0] + digits[2] + digits[3] + digits[4])%2 == 1){
+				    if ((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1){
+					    if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
+						    digits[3] = (digits[3]+1)%2;
+						    alert('Ошибка в 4-ой цифре');
+					    }
+					    else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0){
+						    digits[0] = (digits[0]+1)%2;
+						    alert('Ошибка в 1-ой цифре');
+					    }
+				    }
+				    else{
+					    if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
+						    digits[2] = (digits[2]+1)%2;
+						    alert('Ошибка в 3-ей цифре');
+					    }
+                                            else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0){
+                                                    alert('Ошибка в 5-ой цифре');
+                                            }
+				    }
+			    }  
+			    else {
+				    if((digits[0] + digits[1] + digits[3] + digits[5])%2 == 1){
+					    if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
+						    digits[1] = (digits[1]+1)%2;
+                                                    alert('Ошибка во 2-ой цифре');
+                                            }
+                                            else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 0){
+                                                    alert('Ошибка в 6-ой цифре');
+                                            }
+				    }
+                                    else if ((digits[2] + digits[1] + digits[3] + digits[6])%2 == 1){
+                                            alert('Ошибка в 7-ой цифре');
+                                    }
+			    }
+			    document.getElementById('decodedData').value = String(digits[0]) + String(digits[1]) + String(digits[2]) + String(digits[3]);
+		    }
+	    </script>
     </head>
     <body>
 	    <p><input type='text' id='inputData' /> input data</p>
