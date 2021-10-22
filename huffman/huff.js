@@ -50,17 +50,21 @@ fs.readFile('input.txt', function(error, data){
 			    }
 		    }
 			tree[tmp2].used = true;
-			n = new Node(tree[tmp1].letter + tree[tmp2].letter, tree[tmp1].freq + tree[tmp2].freq, false, null, '');
+			n = new Node(tree[tmp2].letter + tree[tmp1].letter, tree[tmp2].freq + tree[tmp1].freq, false, null, '');
 			tree.push(n);
 			tree[tmp1].father = n;
 			tree[tmp2].father = n;
-			if (tree[tmp1].letter.length > 1){
-				tree[tmp1].code='1';
-				tree[tmp2].code='0';
+			if (tree[tmp2].letter.length = 1 && tree[tmp1].letter.length > 1){
+				tree[tmp1].code = '1';
+				tree[tmp2].code = '0';
+			}
+			else if (tree[tmp2].freq < tree[tmp1].freq){
+				tree[tmp1].code = '1';
+				tree[tmp2].code = '0';
 			}
 			else{
-				tree[tmp1].code='0';
-				tree[tmp2].code='1';
+				tree[tmp1].code = '0';
+				tree[tmp2].code = '1';
 			}
 	    } 
 	}
@@ -83,6 +87,7 @@ fs.readFile('input.txt', function(error, data){
 		out = out + letter[inText.charAt(i)].code;
 	}
 	console.log(out);
+	console.log(out.length);
 
 
 	inText = out;
