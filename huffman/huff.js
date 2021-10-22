@@ -58,7 +58,7 @@ fs.readFile('input.txt', function(error, data){
 				tree[tmp1].code = '1';
 				tree[tmp2].code = '0';
 			}
-			else if (tree[tmp2].freq < tree[tmp1].freq){
+			else if (tree[tmp2].freq <= tree[tmp1].freq){
 				tree[tmp1].code = '1';
 				tree[tmp2].code = '0';
 			}
