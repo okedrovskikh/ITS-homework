@@ -96,6 +96,10 @@ fs.readFile(arg[2], function(error, data){
 		}
 		else if(ram[j] == 'goto'){
 			gochar = ram[j + 1];
+			if (gochar == 'end'){
+				j++;
+				break;
+			}
 			while (ram[j] != gochar){
 				j--;
 			}
