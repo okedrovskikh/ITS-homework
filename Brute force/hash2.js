@@ -18,7 +18,7 @@ while (i <= len_str - len_key + 1) {
         while (str.charAt(i - 1 + j) === key.charAt(j)){
             j++
             if (j == len_key){
-                arr.push(i - 1);
+                arr.push(i);
                 break;
             }
         }
