@@ -19,7 +19,7 @@ for(i = 1; i < str.length; i++){
         for (j = 0; j < len_key; j++){
             if(str.charAt(j + i - 1) == key.charAt(j)){
                 if (j == len_key - 1){
-                    arr.push(i - 1);
+                    arr.push(i);
                 }
             }
             else{
