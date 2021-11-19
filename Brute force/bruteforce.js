@@ -9,7 +9,7 @@ for (i = 0; i < str.length; i++){
         for(j = 0; j < key.length; j++){
             if(str.charAt(i + j) == key.charAt(j)){
                 if (j == key.length - 1){
-                    arr.push(i);
+                    arr.push(i + 1);
                 }
             }
             else{
