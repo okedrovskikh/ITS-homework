@@ -6,7 +6,7 @@ let keyLen = key.length;
 let alph = new Array();
 let del = new Array(strLen + 1);
 let result = new Array();
-let flag, currlen;
+let flag, currLen = 0;
 
 for (i = 0; i < keyLen; i++){
     alph[key.charAt(i)] = 0; 
@@ -29,19 +29,14 @@ for (i = 0; i < keyLen; i++){
 console.log(del);
 
 for (let i = 0; i < strLen; i++){
-    flag = false;
     for (j in alph){
         if (j == str.charAt(i)){
             currLen = del[currLen][str.charAt(i)];
             if (currLen == keyLen){
                 result.push(i - keyLen + 1);
             }
-            flag = true;
             break;
         }
-    }
-    if (flag == false){
-        currLen = 0;
     }
 }
 console.log(result.join(', '));
