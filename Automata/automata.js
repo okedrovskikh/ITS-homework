@@ -6,7 +6,7 @@ let keyLen = key.length;
 let alph = new Array();
 let del = new Array(strLen + 1);
 let result = new Array();
-let flag, currLen = 0;
+let currLen = 0;
 
 for (i = 0; i < keyLen; i++){
     alph[key.charAt(i)] = 0; 
