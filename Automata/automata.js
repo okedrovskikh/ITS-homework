@@ -29,16 +29,17 @@ for (i = 0; i < keyLen; i++){
 console.log(del);
 
 for (let i = 0; i < strLen; i++){
-    for (j in alph){
-        if (j == str.charAt(i)){
-            currLen = del[currLen][str.charAt(i)];
-            if (currLen == keyLen){
-                result.push(i - keyLen + 1);
-            }
-            break;
-        }
+    try{
+        currLen = del[currLen][str.charAt(i)];
+    }
+    catch(TypeError){
+        currLen = 0;
+    }
+    if (currLen == keyLen){
+        result.push(i - keyLen + 1);
     }
 }
+
 console.log(result.join(', '));
 
 
