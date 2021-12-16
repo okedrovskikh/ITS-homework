@@ -52,6 +52,7 @@ for (i = 0; i <= amount; i++){
     }
     shift++;
 }
+console.log(min_shift);
 
 let key = new Array();
 count = 0;
