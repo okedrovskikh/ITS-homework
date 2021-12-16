@@ -45,7 +45,6 @@ for (i = 0; i <= amount; i++){
         check_sum += Math.pow(freq[(count + shift)%amount] - cf[j], 2);
         count++;
     }
-    console.log(check_sum)
     if (min > check_sum){
         min = check_sum;
         min_shift = shift;
