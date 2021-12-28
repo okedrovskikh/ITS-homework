@@ -173,13 +173,14 @@ else if(arg[3] == 'calc') {
             string[1] = '+';
         }
     }
-    let first = call(Number(string[0]));
-    let second = call(Number(string[2]));
+    let first = toFloat(Number(string[0]));
+    let second = toFloat(Number(string[2]));
     let answer;
     if ((string[0][0] == string[1]) || (string[1] == '+' && string[0][0] != '-' && string[2][0] != '-')) {
         answer = addition(first, second);
         result += answer + '\n';
-    } else {
+    } 
+    else {
         answer = sub(first, second);
         result += answer + '\n';
     }
