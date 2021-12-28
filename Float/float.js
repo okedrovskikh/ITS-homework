@@ -71,7 +71,7 @@ function floatToDec(orderBin) {
     return order -= 127;
 }
 
-function toDecFloat(conversion) {
+function toDec(conversion) {
     let mantissaBin = conversion.slice(9, 32);
     let orderBin = conversion.slice(1, 9);
     let sign = conversion[0];
@@ -184,7 +184,7 @@ else if(arg[3] == 'calc') {
         answer = sub(first, second);
         result += answer + '\n';
     }
-    result += String(toDecFloat(answer));
+    result += String(toDec(answer));
     console.log(result);
 }
 
