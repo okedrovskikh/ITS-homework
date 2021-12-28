@@ -51,7 +51,7 @@ function toFloat(number) {
 
     let float = sign;
     float += '0'.repeat(8 - orderBin.length) + orderBin;
-    if (wholeToStr > 0) {
+    if (wholeBin > 0) {
         float += wholeBin.slice(1, wholeBin.length) + fractionalBin;
     } else {
         float += fractionalBin.slice(1, fractionalBin.length);
@@ -122,7 +122,7 @@ function addition(first, second) {
 }
 
 
-function subtraction(first, second) {
+function sub(first, second) {
     let gain = -1;
     let diff = '';
     if (first.slice(1,9) != second.slice(1,9)) {
@@ -180,7 +180,7 @@ else if(arg[3] == 'calc') {
         answer = addition(first, second);
         result += answer + '\n';
     } else {
-        answer = subtraction(first, second);
+        answer = sub(first, second);
         result += answer + '\n';
     }
     result += String(toDecFloat(answer));
